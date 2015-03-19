@@ -1,0 +1,6 @@
+---
+common:
+    modo_stack_exchange:
+        error:
+            notConfigured: Unable to get feed. Please check your module configuration.
+...

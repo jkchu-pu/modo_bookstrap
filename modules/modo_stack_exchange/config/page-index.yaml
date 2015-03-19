@@ -1,0 +1,6 @@
+---
+common:
+    objdefs:
+        content:
+            default: []     # the index page is currently empty
+...

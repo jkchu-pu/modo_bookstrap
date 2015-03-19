@@ -1,0 +1,7 @@
+# info.yaml describes metadata about the module.
+---
+title: Stack Overflow Module
+icon: about
+vendor: modolabs
+dataSourceModels: []
+...

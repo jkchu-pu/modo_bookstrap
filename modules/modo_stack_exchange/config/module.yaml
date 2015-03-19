@@ -1,0 +1,7 @@
+---
+common:
+    pages:
+        index:
+            objdefs:
+                content: page-index.objdefs.content.default     # determines that page-index.yaml will contain the objdef
+...
