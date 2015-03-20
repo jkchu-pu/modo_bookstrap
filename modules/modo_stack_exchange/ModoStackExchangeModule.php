@@ -10,19 +10,18 @@
  */
 
 /**
- *   All module classes will subclass KGOModule
- *   modo_stack_exchange module id will be converted to ModoStackExchangeModule module class
+ * @ingroup Module
+ *
+ * @brief Used to search/browse StackExchange information
  */
 
 class ModoStackExchangeModule extends KGOModule {
 
-    /**
-     *   `initializeForPageConfigObjects_<page>` begins execution when a page is requested
-     *   When ConfigObjects are used the page's object definition will come from a YAML configuration
-     *       For the index page, this definition is first referenced in module.yaml but by convention will be defined in page-index.yaml
-     *   There is also a similar method, `initializeForPage_<page>` which only accepts a $page parameter.
-     *       This method can be used to generate a more dynamic set of objects in code and append them to the page manually
+    /*
+     *  The initializeForPageConfigObjects_ methods below don't need to do much, they simply check if a feed has been configured
+     *  The $objects configured in the page objdefs will take control from here
      */
+
     protected function initializeForPageConfigObjects_index(KGOUIPage $page, $objects) {
         if (!($feed = $this->getFeed())) {
             $this->setPageError($page, 'modo_stack_exchange.error.notConfigured');
@@ -30,4 +29,28 @@ class ModoStackExchangeModule extends KGOModule {
         }
     }
 
+    protected function initializeForPageConfigObjects_search(KGOUIPage $page, $objects) {
+        if (!($feed = $this->getFeed())) {
+            $this->setPageError($page, 'modo_stack_exchange.error.notConfigured');
+            return;
+        }
+    }
+
+    protected function initializeForPageConfigObjects_detail(KGOUIPage $page, $objects) {
+        if (!($feed = $this->getFeed())) {
+            $this->setPageError($page, 'modo_stack_exchange.error.notConfigured');
+            return;
+        }
+    }
+
+    /*
+     *  The getFeaturedQuestions method simply asks the configure dataModel (returned from `getFeed`) for the featuredQuestions
+     */
+
+    public function getFeaturedQuestions() {
+        if ($feed = $this->getFeed()) {
+            $questions = $feed->getFeaturedQuestions();
+            return $questions;
+        }
+    }
 }

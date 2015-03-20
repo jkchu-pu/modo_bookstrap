@@ -1,7 +1,7 @@
-# info.yaml describes metadata about the module.
 ---
-title: Stack Overflow Module
+title: Stack Exchange Module
 icon: about
 vendor: modolabs
-dataSourceModels: []
+dataSourceModels:
+-   StackExchangeDataModel
 ...
